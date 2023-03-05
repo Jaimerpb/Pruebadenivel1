@@ -1,7 +1,7 @@
 import  unittest
 from  Vehiculos.Coche  import  Coche
-class  TestCoche( unittest.TestCase ):
-    def  test_coche( self ):
+class TestCoche(unittest.TestCase):
+    def  test_coche(self):
         coche = Coche("rojo",4,120,1000 )
         self.assertEqual (coche.color ,"rojo")
         self.assertEqual (coche.ruedas , 4 )

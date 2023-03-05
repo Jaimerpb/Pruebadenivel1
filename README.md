@@ -1,4 +1,5 @@
 # Pruebadenivel1
+<<<<<<< HEAD
 Utilizando esta nueva técnica extiende la clase Vehiculo y realiza la siguiente
 implementación:
 • Crea al menos un objeto de cada subclase y añádelos a una lista
@@ -16,3 +17,5 @@ Recordatorio
 Puedes utilizar el atributo especial de clase name para recuperar el nombre de
 la clase de un objeto:
 type(objeto).__name__
+=======
+https://github.com/Jaimerpb/Pruebadenivel1.git

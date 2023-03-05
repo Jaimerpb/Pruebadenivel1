@@ -7,4 +7,3 @@ class TestBicicleta(unittest.TestCase):
         self.assertEqual(bicicleta.ruedas, 2)
         self.assertEqual(bicicleta.tipo, "urbana")
         self.assertEqual(str(bicicleta), "rojo, 2 ruedas, urbana")
-
