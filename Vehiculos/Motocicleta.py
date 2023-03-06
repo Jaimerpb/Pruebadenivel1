@@ -1,6 +1,6 @@
 import Vehiculo 
 import Bicicleta
-class Motocicleta(Vehiculo):
+class Motocicleta(Bicicleta):
     def __init__(self, color, ruedas, velocidad, cilindrada):
         Vehiculo.__init__(self, color, ruedas)
         self.velocidad = velocidad
