@@ -2,53 +2,53 @@ import csv
 import config
 
 class Vehiculo():
-    def __init__(self, id, color, ruedas):
-        self.id = id
+    def __init__(self, númerodebastidor, color, ruedas):
+        self.númerodebastidor= númerodebastidor
         self.color = color
         self.ruedas = ruedas
     def __str__(self):
-        return "ID {}, color {}, {} ruedas".format(self.id, self.color, self.ruedas)
+        return "número de bastidor {}, color {}, {} ruedas".format(self.númerodebastidor, self.color, self.ruedas)
     
 class Coche(Vehiculo):
-    def __init__(self, id, color, ruedas, velocidad, cilindrada):
-        super().__init__(id, color, ruedas)
+    def __init__(self, númerodebastidor, color, ruedas, velocidad, cilindrada):
+        super().__init__(númerodebastidor, color, ruedas)
         self.velocidad = velocidad
         self.cilindrada = cilindrada
     def __str__(self):
         return Vehiculo.__str__(self) + ", {} km/h, {}cc".format(self.velocidad, self.cilindrada)
 
 class Bicicleta(Vehiculo):
-    def __init__(self, id, color, ruedas, tipo):
-        super().__init__(id, color, ruedas)
+    def __init__(self, númerodebastidor, color, ruedas, tipo):
+        super().__init__(númerodebastidor, color, ruedas)
         self.tipo = tipo
     def __str__(self):
         return Vehiculo.__str__(self) + ", de tipo {}".format(self.tipo)
 
 class Formula1(Coche):
-    def __init__(self, id, color, ruedas, velocidad, cilindrada, equipo):
-        super().__init__(id, color, ruedas, velocidad, cilindrada)
+    def __init__(self, númerodebastidor, color, ruedas, velocidad, cilindrada, equipo):
+        super().__init__(númerodebastidor, color, ruedas, velocidad, cilindrada)
         self.equipo = equipo
     def __str__(self):
         return Coche.__str__(self) + ", del equipo {}".format(self.equipo)
     
 class Camioneta(Coche):
-    def __init__(self, id, color, ruedas, velocidad, cilindrada, carga):
-        super().__init__(id, color, ruedas, velocidad, cilindrada)
+    def __init__(self, númerodebastidor, color, ruedas, velocidad, cilindrada, carga):
+        super().__init__(númerodebastidor, color, ruedas, velocidad, cilindrada)
         self.carga = carga
     def __str__(self):
         return Coche.__str__(self) + ", {} kg de carga".format(self.carga)
     
 class Motocicleta(Bicicleta):
-    def __init__(self, id, color, ruedas, tipo, velocidad, cilindrada):
-        super().__init__(id, color, ruedas, tipo)
+    def __init__(self,númerodebastidor, color, ruedas, tipo, velocidad, cilindrada):
+        super().__init__(númerodebastidor, color, ruedas, tipo)
         self.velocidad = velocidad
         self.cilindrada = cilindrada
     def __str__(self):
         return Bicicleta.__str__(self) + ", {} km/h, {}cc".format(self.velocidad, self.cilindrada)
 
 class Quad(Coche):
-    def __init__(self, id, color, ruedas, velocidad, cilindrada, tipo, modelo, carga):
-        super().__init__(id, color, ruedas, velocidad, cilindrada)
+    def __init__(self, númerodebastidor, color, ruedas, velocidad, cilindrada, tipo, modelo, carga):
+        super().__init__(númerodebastidor, color, ruedas, velocidad, cilindrada)
         self.tipo = tipo
         self.modelo = modelo
         self.carga = carga
@@ -80,9 +80,9 @@ class Vehiculos:
                 lista.append(quad)
 
     @staticmethod
-    def buscar(id):
+    def buscar(numerodebastidor):
         for vehiculo in Vehiculos.lista:
-            if vehiculo.id == id:
+            if vehiculo.numerodebastidor == numerodebastidor:
                 return vehiculo
 
     @staticmethod
@@ -104,9 +104,9 @@ class Vehiculos:
         return vehiculo
 
     @staticmethod
-    def borrar(id):
+    def borrar(numerodebastidor):
         for indice, vehiculo in enumerate(Vehiculos.lista):
-            if vehiculo.id == id:
+            if vehiculo.numerodebastidor == numerodebastidor:
                 vehiculo = Vehiculos.lista.pop(indice)
                 Vehiculos.guardar()
                 return vehiculo
@@ -117,14 +117,14 @@ class Vehiculos:
             writer = csv.writer(fichero, delimiter=';')
             for vehiculo in Vehiculos.lista:
                 if type(vehiculo).__name__ == "Coche":
-                    writer.writerow((type(vehiculo).__name__, vehiculo.id, vehiculo.color, vehiculo.ruedas, vehiculo.velocidad, vehiculo.cilindrada))
+                    writer.writerow((type(vehiculo).__name__, vehiculo.numerodebastidor, vehiculo.color, vehiculo.ruedas, vehiculo.velocidad, vehiculo.cilindrada))
                 elif type(vehiculo).__name__ == "Bicicleta":
-                    writer.writerow((type(vehiculo).__name__, vehiculo.id, vehiculo.color, vehiculo.ruedas, vehiculo.tipo))
+                    writer.writerow((type(vehiculo).__name__, vehiculo.numerodebastidor, vehiculo.color, vehiculo.ruedas, vehiculo.tipo))
                 elif type(vehiculo).__name__ == "Formula1":
-                    writer.writerow((type(vehiculo).__name__, vehiculo.id, vehiculo.color, vehiculo.ruedas, vehiculo.velocidad, vehiculo.cilindrada, vehiculo.equipo))
+                    writer.writerow((type(vehiculo).__name__, vehiculo.numerodebastidor, vehiculo.color, vehiculo.ruedas, vehiculo.velocidad, vehiculo.cilindrada, vehiculo.equipo))
                 elif type(vehiculo).__name__ == "Camioneta":
-                    writer.writerow((type(vehiculo).__name__, vehiculo.id, vehiculo.color, vehiculo.ruedas, vehiculo.velocidad, vehiculo.cilindrada, vehiculo.carga))
+                    writer.writerow((type(vehiculo).__name__, vehiculo.numerodebastidor, vehiculo.color, vehiculo.ruedas, vehiculo.velocidad, vehiculo.cilindrada, vehiculo.carga))
                 elif type(vehiculo).__name__ == "Motocicleta":
-                    writer.writerow((type(vehiculo).__name__, vehiculo.id, vehiculo.color, vehiculo.ruedas, vehiculo.tipo, vehiculo.velocidad, vehiculo.cilindrada))
+                    writer.writerow((type(vehiculo).__name__, vehiculo.numerodebastidor, vehiculo.color, vehiculo.ruedas, vehiculo.tipo, vehiculo.velocidad, vehiculo.cilindrada))
                 elif type(vehiculo).__name__ == "Quad":
-                    writer.writerow((type(vehiculo).__name__, vehiculo.id, vehiculo.color, vehiculo.ruedas, vehiculo.velocidad, vehiculo.cilindrada, vehiculo.tipo, vehiculo.modelo, vehiculo.carga))
+                    writer.writerow((type(vehiculo).__name__, vehiculo.numerodebastidor, vehiculo.color, vehiculo.ruedas, vehiculo.velocidad, vehiculo.cilindrada, vehiculo.tipo, vehiculo.modelo, vehiculo.carga))
