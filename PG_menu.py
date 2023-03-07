@@ -39,8 +39,8 @@ class MenuGUI(tk.Frame):
     def buscar_vehiculo(self):
         helpers.limpiar_pantalla()
         print("Buscando un vehículo...\n")
-        id = helpers.leer_texto(3, 3, "ID (2 int y 1 char)").upper()
-        vehiculo = db.Vehiculos.buscar(id)
+        id = helpers.leer_texto(3, 3, "Numero de bastidor (2 int y 1 char)").upper()
+        vehiculo = db.Vehiculos.buscar(numerodebastidor)
         print("{}: {}".format(type(vehiculo).__name__, vehiculo)) if vehiculo else print("Vehículo no encontrado.")
 
     def anadir_vehiculo(self):
@@ -62,8 +62,8 @@ class MenuGUI(tk.Frame):
 
         id = None
         while True:
-            id = helpers.leer_texto(3, 3, "ID (2 int y 1 char)").upper()
-            if helpers.id_valido(id, db.Vehiculos.lista):
+            id = helpers.leer_texto(3, 3, "Numero de bastidor (2 int y 1 char)").upper()
+            if helpers.numerodebastidor_valido(numerodebastidor, db.Vehiculos.lista):
                 break
 
         color = helpers.leer_texto(2, 30, "Color").capitalize()
@@ -72,30 +72,30 @@ class MenuGUI(tk.Frame):
         if opcion == '1':
             velocidad = helpers.leer_numero ("Velocidad km/h")
             cilindrada = helpers.leer_numero("Cilindrada (cc)")
-            db.Vehiculos.lista.append(db.Coche(id, color, ruedas, velocidad, cilindrada))
+            db.Vehiculos.lista.append(db.Coche(numerodebastidor, color, ruedas, velocidad, cilindrada))
         if opcion == '2':
             tipo == helpers.leer_texto("Tipo(urbana,deportiva)")
-            db.Vehiculos.lista.append(db.Bicicleta(id, color, ruedas, tipo))
+            db.Vehiculos.lista.append(db.Bicicleta(numerodebastidor, color, ruedas, tipo))
         if opcion == '3':
             velocidad = helpers.leer_numero ("Velocidad km/h")
             cilindrada = helpers.leer_numero("Cilindrada (cc)")
             carga = helpers.leer_numero("Carga (kg)")
             equipo= helpers.leer_texto("Equipo")
-            db.Vehiculos.lista.append(db.Formula1(id, color, ruedas, velocidad, cilindrada, carga, equipo))
+            db.Vehiculos.lista.append(db.Formula1(numerodebastidor, color, ruedas, velocidad, cilindrada, carga, equipo))
         if opcion == '4':
             velocidad = helpers.leer_numero ("Velocidad km/h")
             cilindrada = helpers.leer_numero("Cilindrada (cc)")
             carga = helpers.leer_numero("Carga (kg)")
-            db.Vehiculos.lista.append(db.Camioneta(id, color, ruedas, velocidad, cilindrada, carga))
+            db.Vehiculos.lista.append(db.Camioneta(numerodebastidor, color, ruedas, velocidad, cilindrada, carga))
         if opcion == '5':
             velocidad = helpers.leer_numero ("Velocidad km/h")
             cilindrada = helpers.leer_numero("Cilindrada (cc)")
             tipo= helpers.leer_texto("Tipo(urbana,deportiva)")
-            db.Vehiculos.lista.append(db.Motocicleta(id, color, ruedas, velocidad, cilindrada, tipo))
+            db.Vehiculos.lista.append(db.Motocicleta(numerodebastidor, color, ruedas, velocidad, cilindrada, tipo))
         if opcion == '6':
             velocidad = helpers.leer_numero ("Velocidad km/h")
             cilindrada = helpers.leer_numero("Cilindrada (cc)")
             tipo= helpers.leer_texto("Tipo(urbana,deportiva)")
             modelo= helpers.leer_texto("Modelo")
-            db.Vehiculos.lista.append(db.Quad(id, color, ruedas, velocidad, cilindrada, tipo, modelo))
+            db.Vehiculos.lista.append(db.Quad(numerodebastidor, color, ruedas, velocidad, cilindrada, tipo, modelo))
 
