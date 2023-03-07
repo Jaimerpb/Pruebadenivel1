@@ -34,12 +34,12 @@ def catalogar(lista, ruedas=None):
         print("\nSe han encontrado {} vehículos con {} ruedas".format(contador, ruedas))
     return contador
 
-def id_valido(id, lista):
-    if not re.match('[0-9]{2}[A-Z]$', id):
-        print("ID incorrecto, debe cumplir el formato.")
+def numerodebastidor_valido(numerodebastidor, lista):
+    if not re.match('[0-9]{2}[A-Z]$', numerodebastidor):
+        print("numerodebastidor incorrecto, debe cumplir el formato.")
         return False
     for vehiculo in lista:
-        if vehiculo.id == id:
-            print("ID utilizado por otro vehículo.")
+        if vehiculo.numerodebastidor == numerodebastidor:
+            print("numerodebastidor utilizado por otro vehículo.")
             return False
     return True
