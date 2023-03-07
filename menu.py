@@ -51,8 +51,8 @@ def iniciar():
 
             numerodebastidor = None
             while True:
-                id = helpers.leer_texto(3, 3, "numerodebastidor (2 int y 1 char)").upper()
-                if helpers.numerodebastidor_valido(id, db.Vehiculos.lista):
+                numerodebastidor= helpers.leer_texto(3, 3, "Numero de bastidor (2 int y 1 char)").upper()
+                if helpers.numerodebastidor_valido(numerodebastidor, db.Vehiculos.lista):
                     break
 
             color = helpers.leer_texto(2, 30, "Color").capitalize()
@@ -65,19 +65,19 @@ def iniciar():
 
             elif opcion == '2':
                 tipo = helpers.leer_texto(1, 10, "Tipo (urbana/deportiva)").capitalize()
-                db.Vehiculos.crear(opcion, id, color, ruedas, tipo)
+                db.Vehiculos.crear(opcion, numerodebastidor, color, ruedas, tipo)
 
             elif opcion == '3':
                 velocidad = helpers.leer_numero(1, 400, "Velocidad km/h (int)").capitalize()
                 cilindrada = helpers.leer_texto(1, 2000, "Cilindrada cc (int)").capitalize()
                 equipo = helpers.leer_texto(1, 20, "Equipo").capitalize()
-                db.Vehiculos.crear(opcion, id, color, ruedas, velocidad, cilindrada, equipo)
+                db.Vehiculos.crear(opcion, numerodebastidor, color, ruedas, velocidad, cilindrada, equipo)
 
             elif opcion == '4':
                 velocidad = helpers.leer_numero(1, 400, "Velocidad km/h (int)").capitalize()
                 cilindrada = helpers.leer_texto(1, 2000, "Cilindrada cc (int)").capitalize()
                 carga = helpers.leer_numero(1, 8000, "Carga kg (int)").capitalize()
-                db.Vehiculos.crear(opcion, id, color, ruedas, velocidad, cilindrada, carga)
+                db.Vehiculos.crear(opcion, numerodebastidor, color, ruedas, velocidad, cilindrada, carga)
 
             elif opcion == '5':
                 tipo = helpers.leer_texto(1, 10, "Tipo (urbana/deportiva)").capitalize()
@@ -90,7 +90,7 @@ def iniciar():
                 tipo = helpers.leer_texto(1, 10, "Tipo (urbana/deportiva)").capitalize()
                 modelo = helpers.leer_texto(1, 20, "Modelo").capitalize()
                 carga = helpers.leer_numero(1, 8000, "Carga kg (int)").capitalize()
-                db.Vehiculos.crear(opcion, id, color, ruedas, velocidad, cilindrada, tipo, modelo, carga)
+                db.Vehiculos.crear(opcion, numerodebastidor, color, ruedas, velocidad, cilindrada, tipo, modelo, carga)
 
             print("Vehículo añadido correctamente.")
 
