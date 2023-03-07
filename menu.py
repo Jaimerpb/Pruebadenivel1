@@ -29,7 +29,7 @@ def iniciar():
         
         elif opcion == '2':
             print("Buscando un vehículo...\n")
-            id = helpers.leer_texto(3, 3, "ID (2 int y 1 char)").upper()
+            numerodebastidor = helpers.leer_texto(3, 3, "numerodebastidor (2 int y 1 char)").upper()
             vehiculo = db.Vehiculos.buscar(id)
             print("{}: {}".format(type(vehiculo).__name__, vehiculo)) if vehiculo else print("Vehículo no encontrado.")
 
@@ -49,10 +49,10 @@ def iniciar():
             helpers.limpiar_pantalla()
             print("Añadiendo un vehículo...\n")
 
-            id = None
+            numerodebastidor = None
             while True:
-                id = helpers.leer_texto(3, 3, "ID (2 int y 1 char)").upper()
-                if helpers.id_valido(id, db.Vehiculos.lista):
+                id = helpers.leer_texto(3, 3, "numerodebastidor (2 int y 1 char)").upper()
+                if helpers.numerodebastidor_valido(id, db.Vehiculos.lista):
                     break
 
             color = helpers.leer_texto(2, 30, "Color").capitalize()
@@ -61,7 +61,7 @@ def iniciar():
             if opcion == '1':
                 velocidad = helpers.leer_numero(1, 400, "Velocidad km/h (int)").capitalize()
                 cilindrada = helpers.leer_numero(1, 2000, "Cilindrada cc (int)").capitalize()
-                db.Vehiculos.crear(opcion, id, color, ruedas, velocidad, cilindrada)
+                db.Vehiculos.crear(opcion, numerodebastidor, color, ruedas, velocidad, cilindrada)
 
             elif opcion == '2':
                 tipo = helpers.leer_texto(1, 10, "Tipo (urbana/deportiva)").capitalize()
@@ -96,9 +96,9 @@ def iniciar():
 
         elif opcion == '4':
             print("Borrando un vehículo...\n")
-            dni = helpers.leer_texto(3, 3, "ID (2 int y 1 char)").upper()
+            numerodebastidor = helpers.leer_texto(3, 3, "numerodebastidor (2 int y 1 char)").upper()
             print("Vehículo borrado correctamente.") if db.Vehiculos.borrar(
-                dni) else print("Vehículo no encontrado.")
+                numerodebastidor) else print("Vehículo no encontrado.")
 
         elif opcion == '5':
             print("Buscando por ruedas...\n")
